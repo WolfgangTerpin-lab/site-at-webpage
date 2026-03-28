@@ -45,6 +45,31 @@ img { display: block; max-width: 100%; }
 .section--dark { background: var(--concrete-light); }
 .section--accent { background: var(--accent); }
 
+/* ---- MOBILE NAV ---- */
+.nav__links.active {
+  display: flex !important;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(28,28,30,0.98);
+  backdrop-filter: blur(20px);
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  z-index: 999;
+}
+
+.nav__links.active a {
+  font-size: 1.5rem;
+}
+
+.nav__burger.toggle span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.nav__burger.toggle span:nth-child(2) { opacity: 0; }
+.nav__burger.toggle span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
 /* ---- NAVIGATION ---- */
 .nav {
   position: fixed;

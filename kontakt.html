@@ -8,6 +8,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    .form-group.has-error input,
+    .form-group.has-error textarea { border-color: #e55; }
+    .form-group .form-error-msg { color: #e55; font-size: 0.8rem; margin-top: 0.3rem; display: none; }
+    .form-group.has-error .form-error-msg { display: block; }
+  </style>
 </head>
 <body>
 
@@ -66,7 +72,7 @@
       <div>
         <div class="section__tag">Anfrage</div>
         <h3 style="margin-bottom: 2rem;">Schreiben Sie uns</h3>
-        <form class="contact-form" action="#" method="POST">
+        <form class="contact-form" name="contact" action="#" method="POST" novalidate onsubmit="return validateForm()">
           <div class="form-group">
             <label for="name">Name *</label>
             <input type="text" id="name" name="name" required placeholder="Ihr vollständiger Name">
@@ -79,9 +85,13 @@
             <label for="subject">Betreff</label>
             <input type="text" id="subject" name="subject" placeholder="Worum geht es?">
           </div>
+          <div class="form-group" style="position:absolute;left:-9999px;height:0;overflow:hidden;">
+            <label for="website">Website (nicht ausfüllen)</label>
+            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+          </div>
           <div class="form-group">
             <label for="message">Nachricht *</label>
-            <textarea id="message" name="message" required placeholder="Beschreiben Sie Ihr Anliegen..."></textarea>
+            <textarea id="message" name="message" required placeholder="Beschreiben Sie Ihr Anliegen..." maxlength="5000"></textarea>
           </div>
           <button type="submit" class="btn btn--primary" style="width: 100%; margin-top: 0.5rem;">Nachricht senden</button>
         </form>
@@ -91,6 +101,51 @@
 </section>
 
 <footer class="footer">
+  <script>
+    // Mobile menu
+    var burger = document.querySelector('.nav__burger');
+    if (burger) {
+      burger.addEventListener('click', function() {
+        document.querySelector('.nav__links').classList.toggle('active');
+        this.classList.toggle('toggle');
+      });
+      document.querySelectorAll('.nav__links a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          document.querySelector('.nav__links').classList.remove('active');
+          document.querySelector('.nav__burger').classList.remove('toggle');
+        });
+      });
+    }
+    // Form validation
+    function validateForm() {
+      var valid = true;
+      var name = document.getElementById('name');
+      var email = document.getElementById('email');
+      var message = document.getElementById('message');
+      var honeypot = document.getElementById('website');
+      document.querySelectorAll('.form-group').forEach(function(g){ g.classList.remove('has-error'); });
+      if (honeypot && honeypot.value !== '') { return false; }
+      if (!name || name.value.trim().length < 2) {
+        name.parentElement.classList.add('has-error');
+        var err = document.createElement('div'); err.className='form-error-msg'; err.textContent='Bitte Name eingeben';
+        name.parentElement.appendChild(err); valid = false;
+      }
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+        email.parentElement.classList.add('has-error');
+        var err = document.createElement('div'); err.className='form-error-msg'; err.textContent='Bitte gültige E-Mail eingeben';
+        email.parentElement.appendChild(err); valid = false;
+      }
+      if (!message || message.value.trim().length < 10) {
+        message.parentElement.classList.add('has-error');
+        var err = document.createElement('div'); err.className='form-error-msg'; err.textContent='Bitte eine Nachricht mit mindestens 10 Zeichen eingeben';
+        message.parentElement.appendChild(err); valid = false;
+      }
+      if (valid) {
+        alert('Vielen Dank für Ihre Nachricht! Wir melden uns in Kürze.');
+      }
+      return valid;
+    }
+  </script>
   <div class="container">
     <div class="footer__grid">
       <div class="footer__brand">
