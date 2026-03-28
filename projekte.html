@@ -8,13 +8,33 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    .project-card { cursor: pointer; }
+    .project-card:hover .project-card__arrow { opacity: 1; transform: translateX(0); }
+    .project-card__arrow {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      width: 36px;
+      height: 36px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transform: translateX(-8px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      font-size: 1rem;
+      color: var(--concrete);
+    }
+  </style>
 </head>
 <body>
 
 <nav class="nav">
   <a href="index.html" class="nav__logo site-logo">
     <img src="img/logo.png" alt="site.at Logo">
-    <span class="site-logo__text">site<span>.at</span></span>
   </a>
   <ul class="nav__links">
     <li><a href="index.html">Home</a></li>
@@ -35,7 +55,7 @@
     <div class="page-header__content">
       <div class="section__tag">Referenzen</div>
       <h1>Unsere Projekte</h1>
-      <p>25 Jahre Erfahrung in Bau- und Projektmanagement — eine Auswahl unsererrealisierten Bauvorhaben.</p>
+      <p>25 Jahre Erfahrung in Bau- und Projektmanagement — eine Auswahl unserer realisierten Bauvorhaben.</p>
     </div>
   </div>
 </header>
@@ -44,51 +64,57 @@
   <div class="container">
     <div class="section__tag">Portfolio</div>
     <h2 class="section__title">Realisierte Projekte</h2>
-    <p class="section__desc">site.at hat zahlreiche Bauvorhaben unterschiedlichster Art und Größe erfolgreich umgesetzt.</p>
+    <p class="section__desc">site.at hat zahlreiche Bauvorhaben unterschiedlichster Art und Größe erfolgreich umgesetzt. Klicken Sie auf ein Projekt für weitere Details.</p>
 
     <div class="projects-grid">
-      <div class="project-card">
-        <img src="img/hero.jpg" alt="Bürobau Wien">
+      <a href="projekt-buero-wien.html" class="project-card">
+        <img src="img/hero-main.jpg" alt="Bürobau Wien">
         <div class="project-card__overlay">
           <div class="project-card__tag">Bürobau</div>
           <h3>Verwaltungsgebäude Wien</h3>
         </div>
-      </div>
-      <div class="project-card">
-        <img src="img/hero.jpg" alt="Wohnbau">
+        <div class="project-card__arrow">→</div>
+      </a>
+      <a href="projekt-wohnanlage.html" class="project-card">
+        <img src="img/hero-main.jpg" alt="Wohnbau">
         <div class="project-card__overlay">
           <div class="project-card__tag">Wohnbau</div>
           <h3>Wohnanlage Neubau</h3>
         </div>
-      </div>
-      <div class="project-card">
-        <img src="img/hero.jpg" alt="Einkaufszentrum">
+        <div class="project-card__arrow">→</div>
+      </a>
+      <a href="projekt-fachmarkt.html" class="project-card">
+        <img src="img/hero-main.jpg" alt="Fachmarkt">
         <div class="project-card__overlay">
           <div class="project-card__tag">Handel</div>
           <h3>Fachmarkt Ost</h3>
         </div>
-      </div>
-      <div class="project-card">
-        <img src="img/hero.jpg" alt="Industrieanlage">
+        <div class="project-card__arrow">→</div>
+      </a>
+      <a href="projekt-produktionshalle.html" class="project-card">
+        <img src="img/hero-main.jpg" alt="Industrieanlage">
         <div class="project-card__overlay">
           <div class="project-card__tag">Industrie</div>
           <h3>Produktionshalle</h3>
         </div>
-      </div>
-      <div class="project-card">
-        <img src="img/hero.jpg" alt="Dachausbau">
+        <div class="project-card__arrow">→</div>
+      </a>
+      <a href="projekt-dachausbau.html" class="project-card">
+        <img src="img/hero-main.jpg" alt="Dachausbau">
         <div class="project-card__overlay">
           <div class="project-card__tag">Dachausbau</div>
           <h3>Dachgeschoss Projekt</h3>
         </div>
-      </div>
-      <div class="project-card">
-        <img src="img/hero.jpg" alt="Sanierung">
+        <div class="project-card__arrow">→</div>
+      </a>
+      <a href="projekt-sanierung.html" class="project-card">
+        <img src="img/hero-main.jpg" alt="Sanierung">
         <div class="project-card__overlay">
           <div class="project-card__tag">Sanierung</div>
           <h3>Bestandssanierung Altbau</h3>
         </div>
-      </div>
+        <div class="project-card__arrow">→</div>
+      </a>
     </div>
   </div>
 </section>
@@ -121,27 +147,24 @@
         </ul>
       </div>
       <div class="footer__col">
-        <h4>Leistungen</h4>
+        <h4>Rechtliches</h4>
         <ul>
-          <li><a href="leistungen.html">Generalplanung</a></li>
-          <li><a href="leistungen.html">Bauaufsicht</a></li>
-          <li><a href="leistungen.html">Sanierung</a></li>
-          <li><a href="leistungen.html">Beratung</a></li>
+          <li><a href="impressum.html">Impressum</a></li>
+          <li><a href="datenschutz.html">Datenschutz</a></li>
         </ul>
       </div>
       <div class="footer__col">
         <h4>Kontakt</h4>
         <ul>
-          <li><a href="mailto:info@site-bau.at">info@site-bau.at</a></li>
-          <li><a href="kontakt.html">Wien, Österreich</a></li>
+          <li><a href="mailto:office@site-bau.at">office@site-bau.at</a></li>
         </ul>
       </div>
     </div>
     <div class="footer__bottom">
       <span>© 2026 site.at bau- und projektmanagement gmbh</span>
       <div class="footer__legal">
-        <a href="#">Impressum</a>
-        <a href="#">Datenschutz</a>
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
       </div>
     </div>
   </div>
