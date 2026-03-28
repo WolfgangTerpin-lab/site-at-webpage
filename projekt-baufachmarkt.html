@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Baufachmarkt — site.at</title>
+  <meta name="description" content="site.at Referenzprojekt: Baufachmarkt">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2rem; }
+    .gallery-grid img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border: 1px solid var(--grid-line); transition: opacity 0.3s ease; }
+    .gallery-grid img:hover { opacity: 0.85; }
+    @media(max-width:768px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media(max-width:480px) { .gallery-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav__logo site-logo">
+    <img src="img/logo.png" alt="site.at Logo">
+  </a>
+  <ul class="nav__links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="leistungen.html">Leistungen</a></li>
+    <li><a href="profil.html">Profil</a></li>
+    <li><a href="projekte.html" class="active">Projekte</a></li>
+    <li><a href="kontakt.html">Kontakt</a></li>
+    <li><a href="kontakt.html" class="nav__cta">Anfrage</a></li>
+  </ul>
+  <button class="nav__burger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<header class="page-header">
+  <div class="page-header__grid"></div>
+  <div class="container">
+    <div class="page-header__content">
+      <div class="section__tag">Handel</div>
+      <h1>Baufachmarkt</h1>
+      <a href="projekte.html" style="display:inline-block; margin-top:1rem; color: var(--accent); font-size:0.85rem; text-decoration:none;">← Alle Projekte</a>
+    </div>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container">
+    <div style="margin-bottom: 3rem;">
+      <img src="img/projects/baufachmarkt.jpg" alt="Baufachmarkt" style="width:100%; max-height:500px; object-fit:cover; border:1px solid var(--grid-line);">
+    </div>
+
+    <div class="section__tag">Projektgalerie</div>
+    <h2 class="section__title" style="margin-bottom:1rem;">Bilder aus der Bauphase</h2>
+    <div class="gallery-grid"><img src="img/projects/baufachmarkt/1.jpg" alt="Baufachmarkt"><img src="img/projects/baufachmarkt/2.jpg" alt="Baufachmarkt"><img src="img/projects/baufachmarkt/3.jpg" alt="Baufachmarkt"><img src="img/projects/baufachmarkt/4.jpg" alt="Baufachmarkt"><img src="img/projects/baufachmarkt/5.jpg" alt="Baufachmarkt"><img src="img/projects/baufachmarkt/6.jpg" alt="Baufachmarkt"><img src="img/projects/baufachmarkt/7.jpg" alt="Baufachmarkt"><img src="img/projects/baufachmarkt/8.jpg" alt="Baufachmarkt"></div>
+  </div>
+</section>
+
+<div class="cta-section">
+  <div class="container">
+    <div class="section__tag">Ihr Projekt</div>
+    <h2>Ähnliches geplant?</h2>
+    <p>Wir freuen uns auf Ihre Anfrage.</p>
+    <a href="kontakt.html" class="btn btn--primary">Kontakt aufnehmen</a>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a href="index.html" class="nav__logo site-logo" style="margin-bottom:1rem; display:inline-flex;">
+          <img src="img/logo.png" alt="site.at Logo" style="height:36px;">
+        </a>
+        <p>Bau- und Projektmanagement GmbH — Ihr Partner für alle Bauangelegenheiten seit 2001 in Wien.</p>
+      </div>
+      <div class="footer__col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="leistungen.html">Leistungen</a></li>
+          <li><a href="profil.html">Profil</a></li>
+          <li><a href="projekte.html">Projekte</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Rechtliches</h4>
+        <ul>
+          <li><a href="impressum.html">Impressum</a></li>
+          <li><a href="datenschutz.html">Datenschutz</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Kontakt</h4>
+        <ul>
+          <li><a href="mailto:office@site-bau.at">office@site-bau.at</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2026 site.at bau- und projektmanagement gmbh</span>
+      <div class="footer__legal">
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
