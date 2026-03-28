@@ -34,6 +34,7 @@
     <span></span><span></span><span></span>
   </button>
 </nav>
+<div class="nav__backdrop" id="navBackdrop"></div>
 
 <header class="page-header">
   <div class="page-header__grid"></div>
@@ -101,51 +102,7 @@
 </section>
 
 <footer class="footer">
-  <script>
-    // Mobile menu
-    var burger = document.querySelector('.nav__burger');
-    if (burger) {
-      burger.addEventListener('click', function() {
-        document.querySelector('.nav__links').classList.toggle('active');
-        this.classList.toggle('toggle');
-      });
-      document.querySelectorAll('.nav__links a').forEach(function(link) {
-        link.addEventListener('click', function() {
-          document.querySelector('.nav__links').classList.remove('active');
-          document.querySelector('.nav__burger').classList.remove('toggle');
-        });
-      });
-    }
-    // Form validation
-    function validateForm() {
-      var valid = true;
-      var name = document.getElementById('name');
-      var email = document.getElementById('email');
-      var message = document.getElementById('message');
-      var honeypot = document.getElementById('website');
-      document.querySelectorAll('.form-group').forEach(function(g){ g.classList.remove('has-error'); });
-      if (honeypot && honeypot.value !== '') { return false; }
-      if (!name || name.value.trim().length < 2) {
-        name.parentElement.classList.add('has-error');
-        var err = document.createElement('div'); err.className='form-error-msg'; err.textContent='Bitte Name eingeben';
-        name.parentElement.appendChild(err); valid = false;
-      }
-      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
-        email.parentElement.classList.add('has-error');
-        var err = document.createElement('div'); err.className='form-error-msg'; err.textContent='Bitte gültige E-Mail eingeben';
-        email.parentElement.appendChild(err); valid = false;
-      }
-      if (!message || message.value.trim().length < 10) {
-        message.parentElement.classList.add('has-error');
-        var err = document.createElement('div'); err.className='form-error-msg'; err.textContent='Bitte eine Nachricht mit mindestens 10 Zeichen eingeben';
-        message.parentElement.appendChild(err); valid = false;
-      }
-      if (valid) {
-        alert('Vielen Dank für Ihre Nachricht! Wir melden uns in Kürze.');
-      }
-      return valid;
-    }
-  </script>
+  
   <div class="container">
     <div class="footer__grid">
       <div class="footer__brand">
@@ -188,5 +145,86 @@
   </div>
 </footer>
 
+  <script>
+    (function() {
+      var burger = document.querySelector('.nav__burger');
+      var nav = document.querySelector('.nav__links');
+      var backdrop = document.getElementById('navBackdrop');
+      if (!burger || !nav) return;
+      burger.addEventListener('click', function() {
+        nav.classList.toggle('active');
+        nav.classList.toggle('open');
+        burger.classList.toggle('toggle');
+        if (backdrop) backdrop.classList.toggle('show');
+      });
+      if (backdrop) {
+        backdrop.addEventListener('click', function() {
+          nav.classList.remove('active', 'open');
+          burger.classList.remove('toggle');
+          backdrop.classList.remove('show');
+        });
+      }
+      nav.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          nav.classList.remove('active', 'open');
+          burger.classList.remove('toggle');
+          if (backdrop) backdrop.classList.remove('show');
+        });
+      });
+    })();
+  </script>
+
+  <script>
+    (function() {
+      var burger = document.querySelector('.nav__burger');
+      var nav = document.querySelector('.nav__links');
+      var backdrop = document.getElementById('navBackdrop');
+      if (burger && nav) {
+        burger.addEventListener('click', function() {
+          nav.classList.toggle('active');
+          nav.classList.toggle('open');
+          burger.classList.toggle('toggle');
+          if (backdrop) backdrop.classList.toggle('show');
+        });
+        if (backdrop) {
+          backdrop.addEventListener('click', function() {
+            nav.classList.remove('active','open');
+            burger.classList.remove('toggle');
+            backdrop.classList.remove('show');
+          });
+        }
+        nav.querySelectorAll('a').forEach(function(link) {
+          link.addEventListener('click', function() {
+            nav.classList.remove('active','open');
+            burger.classList.remove('toggle');
+            if (backdrop) backdrop.classList.remove('show');
+          });
+        });
+      }
+      // Form validation
+      window.validateForm = function() {
+        var valid = true;
+        var name = document.getElementById('name');
+        var email = document.getElementById('email');
+        var message = document.getElementById('message');
+        var honeypot = document.getElementById('website');
+        document.querySelectorAll('.form-group').forEach(function(g){ g.classList.remove('has-error'); });
+        if (honeypot && honeypot.value !== '') { return false; }
+        if (!name || name.value.trim().length < 2) {
+          name.parentElement.classList.add('has-error');
+          valid = false;
+        }
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+          email.parentElement.classList.add('has-error');
+          valid = false;
+        }
+        if (!message || message.value.trim().length < 10) {
+          message.parentElement.classList.add('has-error');
+          valid = false;
+        }
+        return valid;
+      };
+    })();
+  </script>
 </body>
 </html>

@@ -28,6 +28,7 @@
     <span></span><span></span><span></span>
   </button>
 </nav>
+<div class="nav__backdrop" id="navBackdrop"></div>
 
 <!-- HERO with prominent red rectangle banner -->
 <section class="hero">
@@ -180,19 +181,35 @@
 
 
   <script>
-    var burger = document.querySelector('.nav__burger');
-    if (burger) {
+    (function() {
+      var burger = document.querySelector('.nav__burger');
+      var nav = document.querySelector('.nav__links');
+      var backdrop = document.getElementById('navBackdrop');
+      if (!burger || !nav) return;
+
       burger.addEventListener('click', function() {
-        document.querySelector('.nav__links').classList.toggle('active');
-        this.classList.toggle('toggle');
+        nav.classList.toggle('active');
+        nav.classList.toggle('open');
+        burger.classList.toggle('toggle');
+        if (backdrop) backdrop.classList.toggle('show');
       });
-      document.querySelectorAll('.nav__links a').forEach(function(link) {
+
+      if (backdrop) {
+        backdrop.addEventListener('click', function() {
+          nav.classList.remove('active', 'open');
+          burger.classList.remove('toggle');
+          backdrop.classList.remove('show');
+        });
+      }
+
+      nav.querySelectorAll('a').forEach(function(link) {
         link.addEventListener('click', function() {
-          document.querySelector('.nav__links').classList.remove('active');
-          document.querySelector('.nav__burger').classList.remove('toggle');
+          nav.classList.remove('active', 'open');
+          burger.classList.remove('toggle');
+          if (backdrop) backdrop.classList.remove('show');
         });
       });
-    }
+    })();
   </script>
 </body>
 </html>
