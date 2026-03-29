@@ -27,6 +27,7 @@
   <button class="nav__burger" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
+<button class="nav__close" aria-label="Menü schließen"></button>
 </nav>
 <div class="nav__backdrop" id="navBackdrop"></div>
 
@@ -57,72 +58,7 @@
   </div>
 </section>
 
-<!-- SERVICES TEASER -->
-<section class="section section--dark">
-  <div class="container">
-    <div class="section__tag">Leistungen</div>
-    <h2 class="section__title">Komplette Abwicklung<br>wie auch Teilleistungen</h2>
-    <p class="section__desc">site.at übernimmt die komplette Projektierung und Abwicklung als Generalplaner — oder gezielt einzelne Leistungsbereiche.</p>
-    <div class="services-grid">
-      <div class="service-card">
-        <div class="service-card__icon">◎</div>
-        <h3>Bedarfsanalyse & Budgetplanung</h3>
-        <p>Gemeinsam mit unseren Kunden formulieren wir Ziele, erarbeiten ein Leitkonzept für Kosten und Termine.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-card__icon">⬡</div>
-        <h3>Projektentwicklung</h3>
-        <p>Von der ersten Idee bis zur Realisierung — wir begleiten den gesamten Entwicklungsprozess.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-card__icon">⟐</div>
-        <h3>Bauplanung & Koordination</h3>
-        <p>Planungskoordination, Schnittstellenüberwachung und künstlerische Gestaltung aus einer Hand.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-card__icon">⚐</div>
-        <h3>Behördenabwicklung</h3>
-        <p>Professionelle Abwicklung aller behördlichen Genehmigungen und erforderlichen Dokumentationen.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-card__icon">◈</div>
-        <h3>Kostenermittlung & Optimierung</h3>
-        <p>Transparente Kostenermittlung und kontinuierliche Optimierung für beste Wirtschaftlichkeit.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-card__icon">⟜</div>
-        <h3>Bauaufsicht & Qualitätskontrolle</h3>
-        <p>Bauleitungsorganisation, Terminplanung und Überwachung bis zur Abnahme und Abrechnung.</p>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- PROFILE TEASER -->
-<section class="section">
-  <div class="container">
-    <div class="profile-section">
-      <div class="profile-visual">
-        <img src="img/hero-main.jpg" alt="site.at Team">
-        <div class="stat-overlay">
-          <div class="number">25</div>
-          <div class="label">Jahre Erfahrung</div>
-        </div>
-      </div>
-      <div>
-        <div class="section__tag">Über uns</div>
-        <h2 class="section__title">Vertreter der Interessen unserer Kunden</h2>
-        <p style="color: var(--steel-light); margin-bottom: 1.5rem; font-weight: 300; font-size: 1.05rem; max-width: 480px;">
-          Die site.at bau- und projektmanagement gmbh entstand 2001 aus der zehnjährigen Erfahrung von Helmut Galler, Wolfgang Niese und Helmut Ringhofer für einen Wiener Bauträger.
-        </p>
-        <p style="color: var(--steel-light); margin-bottom: 2.5rem; font-weight: 300; font-size: 1.05rem;">
-          Wir verstehen uns als Vertreter der Interessen unserer Kunden und stehen Ihnen als Partner in Verbindung mit unseren Fachplanern für das gesamte Projekt zur Seite.
-        </p>
-        <a href="profil.html" class="btn btn--outline">Mehr erfahren</a>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- CTA -->
 <div class="cta-section">
@@ -181,9 +117,11 @@
 
 
   
+  
   <script>
     (function() {
       var burger = document.querySelector('.nav__burger');
+      var closeBtn = document.querySelector('.nav__close');
       var backdrop = document.getElementById('navBackdrop');
       if (!burger) return;
 
@@ -204,6 +142,7 @@
         }
       });
 
+      if (closeBtn) closeBtn.addEventListener('click', closeMenu);
       if (backdrop) backdrop.addEventListener('click', closeMenu);
       document.querySelectorAll('.nav__links a').forEach(function(link) {
         link.addEventListener('click', closeMenu);
